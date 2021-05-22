@@ -3,21 +3,26 @@ package kodlamaio.northwind.entities.concretes;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "products")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Product {
 
 	// Anotasyon: calisma aninda bilgi toplama
-	//Anatosyonlarin sirasi onem arz edebilir
-	
+	// Anatosyonlarin sirasi onem arz edebilir
+
 	@Id // tablonun id sini böyle verilrir
-	@GeneratedValue // Id 1 1 artirialacak
+	@GeneratedValue(strategy=GenerationType.IDENTITY) // Id 1 1 artirialacak
 	@Column(name = "product_id") // column namelrei verilir
 	private int id;
 
@@ -36,13 +41,13 @@ public class Product {
 	@Column(name = "quantity_per_unit")
 	private String quantityPerUnit;
 
-	public Product(int id, int categoryId, String productName, double unitPrice, short unitsInStock,
-			String quantityPerUnit) {
-		this.id = id;
-		this.categoryId = categoryId;
-		this.productName = productName;
-		this.unitPrice = unitPrice;
-		this.unitsInStock = unitsInStock;
-		this.quantityPerUnit = quantityPerUnit;
-	}
+	/*
+	 * @AllArgsConstructor @NoArgsConstructor eklediğim icin commete aldık 
+	 * public Product() { }
+	 * 
+	 * public Product(int id, int categoryId, String productName, double unitPrice,
+	 * short unitsInStock, String quantityPerUnit) { this.id = id; this.categoryId =
+	 * categoryId; this.productName = productName; this.unitPrice = unitPrice;
+	 * this.unitsInStock = unitsInStock; this.quantityPerUnit = quantityPerUnit; }
+	 */
 }
