@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -25,9 +27,9 @@ public class Product {
 	@GeneratedValue(strategy=GenerationType.IDENTITY) // Id 1 1 artirialacak
 	@Column(name = "product_id") // column namelrei verilir
 	private int id;
-
-	@Column(name = "category_id")
-	private int categoryId;
+//asagida iliskilendirme (joincolumn) yaptigimiz icin commente aldık
+//	@Column(name = "category_id")
+//	private int categoryId;
 
 	@Column(name = "product_name")
 	private String productName;
@@ -50,4 +52,11 @@ public class Product {
 	 * categoryId; this.productName = productName; this.unitPrice = unitPrice;
 	 * this.unitsInStock = unitsInStock; this.quantityPerUnit = quantityPerUnit; }
 	 */
+	
+	//iliskilendirme islemi category tablosu ile
+	@ManyToOne()//once olduumuz yer=Many
+	@JoinColumn(name="category_id")
+	private Category category;
+	
+	
 }
