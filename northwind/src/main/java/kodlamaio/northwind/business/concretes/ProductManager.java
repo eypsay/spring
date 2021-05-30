@@ -15,6 +15,7 @@ import kodlamaio.northwind.core.utilities.results.SuccesDataResult;
 import kodlamaio.northwind.core.utilities.results.SuccessResult;
 import kodlamaio.northwind.dataAccess.abstracts.ProductDao;
 import kodlamaio.northwind.entities.concretes.Product;
+import kodlamaio.northwind.entities.dtos.ProductWithCategoryDto;
 
 @Service // bu class service gorevi gorecek demek
 public class ProductManager implements ProductService {
@@ -101,6 +102,12 @@ public class ProductManager implements ProductService {
 		Sort sort = Sort.by(Sort.Direction.DESC,"productName");
 
 		return new SuccesDataResult<List<Product>>(this.productDao.findAll(sort), "Sıralama Basarılı");
+	}
+
+	@Override
+	public DataResult<List<ProductWithCategoryDto>> getProdcutWithCategoryDetails() {
+		
+		return new SuccesDataResult<List<ProductWithCategoryDto>>(this.productDao.getProductWithCategoryDetails(), "DTO Data Lsitelendi");
 	}
 
 }

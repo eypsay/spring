@@ -15,6 +15,7 @@ import kodlamaio.northwind.core.utilities.results.DataResult;
 import kodlamaio.northwind.core.utilities.results.Result;
 import kodlamaio.northwind.core.utilities.results.SuccesDataResult;
 import kodlamaio.northwind.entities.concretes.Product;
+import kodlamaio.northwind.entities.dtos.ProductWithCategoryDto;
 
 //controller:android,web ,Ios Angular gibi ortamların bizim
 //backhandimizle kunosabilisei
@@ -39,6 +40,12 @@ public class ProductsController {
 	// asagidaki kodla refactor ettik
 	public DataResult<List<Product>> getAll() {
 		return this.productService.getAll();
+
+	}
+	
+	@GetMapping("/getProductWithCategoryDetails")
+	public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+		return this.productService.getProdcutWithCategoryDetails();
 
 	}
 
